@@ -48,7 +48,7 @@ public class Controller {
     }
 
     public void valoresCargaDatos(int media, int desviacion, int entranAComprar, 
-            int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, float h) {
+            int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, double h) {
         calculator.cargaDatos(media, desviacion, entranAComprar, entranAMesa, sientaEnMesa, seRetira, desde, hasta, k, h);
     }
 

@@ -63,7 +63,7 @@ public class Calculator {
     int cantClientes = 0;
     double tiempoAcumulado = 0;
     float valorK=0;
-    float h=0;
+    double h=0;
     
     private static final String NO_EVN = "NULL";
     public static final String EVN_INICIO = "Inicio";
@@ -94,7 +94,7 @@ public class Calculator {
         this.tiempoUtilizacionMesa2 = tiempoUtilizacionMesa2;
     }
 
-    public void cargaDatos(int media, int desviacion, int entranAComprar, int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, float h) {
+    public void cargaDatos(int media, int desviacion, int entranAComprar, int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, double h) {
         this.media = media;
         this.desviacion = desviacion;
         this.entranAComprar = entranAComprar;
