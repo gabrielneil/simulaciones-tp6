@@ -8,7 +8,7 @@ package front;
 import java.text.SimpleDateFormat;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
-import simulaciones.tp5.Controller;
+import simulaciones.tp6.Controller;
 
 /**
  *

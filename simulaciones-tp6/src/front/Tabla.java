@@ -5,10 +5,10 @@
  */
 package front;
 
+import simulaciones.tp6.Controller;
 import java.text.SimpleDateFormat;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
-import simulaciones.tp5.*;
 
 /**
  *
@@ -138,6 +138,7 @@ public class Tabla extends javax.swing.JFrame {
 
         jLabel1.setText("Tiempo promedio de permanencia:");
 
+        resultado_txt.setEditable(false);
         resultado_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resultado_txtActionPerformed(evt);
@@ -155,7 +156,7 @@ public class Tabla extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resultado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(resultado_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)

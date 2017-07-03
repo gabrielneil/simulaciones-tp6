@@ -6,7 +6,7 @@
 package front;
 
 import javax.swing.JTextField;
-import simulaciones.tp5.Controller;
+import simulaciones.tp6.Controller;
 
 /**
  *

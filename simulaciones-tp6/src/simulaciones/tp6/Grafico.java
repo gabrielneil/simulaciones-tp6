@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package simulaciones.tp5;
+package simulaciones.tp6;
 
 import Objects.Cliente;
 import Objects.Servidor;
@@ -11,8 +11,6 @@ import front.Tabla;
 import front.Tabla_clientes;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import java.util.Collections;
-
 /**
  *
  * @author gneil
