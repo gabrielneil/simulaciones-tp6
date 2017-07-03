@@ -19,15 +19,19 @@ public class Grafico {
 
     DefaultTableModel model;
     DefaultTableModel model_cliente;
+    DefaultTableModel model_euler;
     Controller controller;
     Tabla_clientes t;
+    Tabla_clientes tEuler;
     Tabla tabla;
     ArrayList<Cliente> lista = new ArrayList<>();
 
     public Grafico(ArrayList lista, Controller controller) {
         tabla = new Tabla(controller);
         t = new Tabla_clientes(controller);
+        tEuler = new Tabla_clientes(controller);
         this.controller = controller;
+        model_euler = (DefaultTableModel) tEuler._tblSimulacion.getModel();
         model = (DefaultTableModel) tabla._tblSimulacion.getModel();
         model_cliente = (DefaultTableModel) t._tblSimulacion.getModel();
         this.lista = lista;
@@ -343,6 +347,12 @@ public class Grafico {
     public void mostrarClientes() {
         t.setVisible(true);
     }
+    
+    public void mostrarEuler(){
+        tEuler.setVisible(true);
+        calcularEuler();
+        
+    }
 
     String arreglo[];
 
@@ -362,7 +372,7 @@ public class Grafico {
             }
             arreglo[suma] = "Hora Partida (" + contador + ")";
             i = suma;
-            contador++;
+        contador++;
         }
 
         for (int i = 0; i < lista.size(); i++) {
@@ -383,6 +393,9 @@ public class Grafico {
         model_cliente.addRow(valoresClientes);
     }
     
+    
+    
+    
     public void buscarLosMayores(){
         double menorEnCaja = 0;
         for (int i = 1; i < model.getRowCount(); i++) {
@@ -394,5 +407,9 @@ public class Grafico {
                 }
             }
         }
+    }
+
+    private void calcularEuler() {
+       
     }
 }

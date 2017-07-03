@@ -29,19 +29,19 @@ public class Formulas {
         return (((Math.sqrt(-2 * Math.log(rnd1)) * Math.cos(2 * Math.PI * rnd2)) * desviacion) + media) / 60;
     }
 
-    //devuelve en minutos
-    public double tiempoConsumicion(int a, int b, float rnd) {
-        return (a - b) + (rnd * ((a + b) - (a - b)));
-    }
+//    //devuelve en minutos
+//    public double tiempoConsumicion(int a, int b, float rnd) {
+//        return (a - b) + (rnd * ((a + b) - (a - b)));
+//    }
 
     //devuelve en minutos
     public static double tiempoUtilizacionMesa(int a, int b, float rnd) {
         return (a - b) + (rnd * ((a + b) - (a - b)));
     }
-
-    public static double tiempoConsumicion(int valorT, float valorK) {
-        double h = 0.001;
-
+    static double h = 0.001;
+    public static double tiempoConsumicion(int valorT, float valorK, float h1) {
+        h = h1;
+        System.out.println("el valor que metió es"+h);
         double t0 = 0;
         double T = 0;
         double valorDiferencial = 0;

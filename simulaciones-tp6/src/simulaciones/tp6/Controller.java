@@ -48,8 +48,8 @@ public class Controller {
     }
 
     public void valoresCargaDatos(int media, int desviacion, int entranAComprar, 
-            int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k) {
-        calculator.cargaDatos(media, desviacion, entranAComprar, entranAMesa, sientaEnMesa, seRetira, desde, hasta, k);
+            int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, float h) {
+        calculator.cargaDatos(media, desviacion, entranAComprar, entranAMesa, sientaEnMesa, seRetira, desde, hasta, k, h);
     }
 
     public void simulacion() {
@@ -60,6 +60,9 @@ public class Controller {
        calculator.mostrarClientes();
     }
     
+    public void mostrarEuler() {
+       calculator.mostrarEuler();
+    }
     public int mostrarCantidadClientes(){
         return calculator.cantClientes();
     }

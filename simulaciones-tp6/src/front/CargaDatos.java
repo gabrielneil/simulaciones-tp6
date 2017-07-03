@@ -64,7 +64,7 @@ public class CargaDatos extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         valorK_txt = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        h_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,7 +148,7 @@ public class CargaDatos extends javax.swing.JFrame {
 
         jLabel18.setText("Valor de h:");
 
-        jTextField1.setText("0.1");
+        h_txt.setText("0.01");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,7 +215,7 @@ public class CargaDatos extends javax.swing.JFrame {
                                     .addComponent(valorK_txt)
                                     .addComponent(hasta_txt)
                                     .addComponent(desde_txt)
-                                    .addComponent(jTextField1))))
+                                    .addComponent(h_txt))))
                         .addGap(160, 160, 160))))
         );
         layout.setVerticalGroup(
@@ -275,7 +275,7 @@ public class CargaDatos extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(h_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -293,11 +293,11 @@ public class CargaDatos extends javax.swing.JFrame {
 
     private void aceptar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_btnActionPerformed
         // TODO add your handling code here:
-        if (Integer.parseInt(desde_txt.getText()) >= 0 && Integer.parseInt(hasta_txt.getText()) <= 60 && Integer.parseInt(hasta_txt.getText()) > Integer.parseInt(desde_txt.getText()) && valorK_txt.getText()!="" && Float.parseFloat(valorK_txt.getText()) != 0) {
+        if (Integer.parseInt(desde_txt.getText()) >= 0 && Integer.parseInt(hasta_txt.getText()) > Integer.parseInt(desde_txt.getText()) && valorK_txt.getText()!="" && Float.parseFloat(valorK_txt.getText()) != 0 && Float.parseFloat(valorK_txt.getText()) > 0 && Float.parseFloat(h_txt.getText()) != 0 && Float.parseFloat(h_txt.getText()) > 0 && h_txt.getText()!="" ) {
 
             if (Integer.parseInt(media_txt.getText()) >= 0 && Integer.parseInt(desviacion_txt.getText()) >= 0 && Integer.parseInt(entranAComprar_txt.getText()) >= 0 && Integer.parseInt(entranAMesa_txt.getText()) >= 0 && Integer.parseInt(sientaEnMesa_txt.getText()) >= 0 && Integer.parseInt(seRetira_txt.getText()) >= 0) {
                 controller.valoresCargaTiempos(cargaTiempos.getTiempoTicket_txt(), cargaTiempos.getTiempoEspera_txt(), cargaTiempos.getTiempoConsumicion1_txt(), cargaTiempos.getTiempoConsumicion2_txt(), cargaTiempos.getTiempoUtilizacionMesa1_txt(), cargaTiempos.getTiempoUtilizacionMesa2_txt());
-                controller.valoresCargaDatos(Integer.parseInt(media_txt.getText()), Integer.parseInt(desviacion_txt.getText()), Integer.parseInt(entranAComprar_txt.getText()), Integer.parseInt(entranAMesa_txt.getText()), Integer.parseInt(sientaEnMesa_txt.getText()), Integer.parseInt(seRetira_txt.getText()), Integer.parseInt(desde_txt.getText()), Integer.parseInt(hasta_txt.getText()), Float.parseFloat(valorK_txt.getText()));
+                controller.valoresCargaDatos(Integer.parseInt(media_txt.getText()), Integer.parseInt(desviacion_txt.getText()), Integer.parseInt(entranAComprar_txt.getText()), Integer.parseInt(entranAMesa_txt.getText()), Integer.parseInt(sientaEnMesa_txt.getText()), Integer.parseInt(seRetira_txt.getText()), Integer.parseInt(desde_txt.getText()), Integer.parseInt(hasta_txt.getText()), Float.parseFloat(valorK_txt.getText()), Float.parseFloat(h_txt.getText()));
                 this.setVisible(false);
                 controller.simulacion();
             } else {
@@ -315,7 +315,7 @@ public class CargaDatos extends javax.swing.JFrame {
     private void editarTiempos_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTiempos_btnActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        controller.valoresCargaDatos(Integer.parseInt(media_txt.getText()), Integer.parseInt(desviacion_txt.getText()), Integer.parseInt(entranAComprar_txt.getText()), Integer.parseInt(entranAMesa_txt.getText()), Integer.parseInt(sientaEnMesa_txt.getText()), Integer.parseInt(seRetira_txt.getText()), Integer.parseInt(desde_txt.getText()), Integer.parseInt(hasta_txt.getText()), Float.parseFloat(valorK_txt.getText()));
+        controller.valoresCargaDatos(Integer.parseInt(media_txt.getText()), Integer.parseInt(desviacion_txt.getText()), Integer.parseInt(entranAComprar_txt.getText()), Integer.parseInt(entranAMesa_txt.getText()), Integer.parseInt(sientaEnMesa_txt.getText()), Integer.parseInt(seRetira_txt.getText()), Integer.parseInt(desde_txt.getText()), Integer.parseInt(hasta_txt.getText()), Float.parseFloat(valorK_txt.getText()), Float.parseFloat(h_txt.getText()));
         cargaTiempos.setVisible(true);
     }//GEN-LAST:event_editarTiempos_btnActionPerformed
 
@@ -334,6 +334,7 @@ public class CargaDatos extends javax.swing.JFrame {
     private javax.swing.JButton editarTiempos_btn;
     private javax.swing.JTextField entranAComprar_txt;
     private javax.swing.JTextField entranAMesa_txt;
+    private javax.swing.JTextField h_txt;
     private javax.swing.JTextField hasta_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -353,7 +354,6 @@ public class CargaDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField media_txt;
     private javax.swing.JButton salir_btn;
     private javax.swing.JTextField seRetira_txt;

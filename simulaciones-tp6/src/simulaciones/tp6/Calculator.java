@@ -63,6 +63,8 @@ public class Calculator {
     int cantClientes = 0;
     double tiempoAcumulado = 0;
     float valorK=0;
+    float h=0;
+    
     private static final String NO_EVN = "NULL";
     public static final String EVN_INICIO = "Inicio";
     public static final String EVN_LLEGADA = "Llegada Cliente";
@@ -92,7 +94,7 @@ public class Calculator {
         this.tiempoUtilizacionMesa2 = tiempoUtilizacionMesa2;
     }
 
-    public void cargaDatos(int media, int desviacion, int entranAComprar, int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k) {
+    public void cargaDatos(int media, int desviacion, int entranAComprar, int entranAMesa, int sientaEnMesa, int seRetira, int desde, int hasta, float k, float h) {
         this.media = media;
         this.desviacion = desviacion;
         this.entranAComprar = entranAComprar;
@@ -102,6 +104,7 @@ public class Calculator {
         this.desde = desde;
         this.hasta = hasta;
         this.valorK = k;
+        this.h = h;
     }
 
     public void setEvento(String evento) {
@@ -118,6 +121,9 @@ public class Calculator {
         grafico.hacerVisible();
         setEvento(NO_EVN);
         double tiempoDeCorte = 60;
+//        if (t) {
+//            tiempoDeCorte = hasta;
+//        }
         while (reloj <= tiempoDeCorte) {
             simularAvance();
         }
@@ -325,7 +331,7 @@ public class Calculator {
             valorT=50;
         }
         
-        double tiempoConsumicion = Formulas.tiempoConsumicion(valorT, valorK);
+        double tiempoConsumicion = Formulas.tiempoConsumicion(valorT, valorK, h);
         double finConsumicion = tiempoConsumicion + reloj;
         cliente.setEstado(EVN_CONSUMIENDO);
         cliente.setHoraPartida(finConsumicion);
@@ -437,7 +443,12 @@ public class Calculator {
     public void mostrarClientes() {
         grafico.mostrarClientes();
     }
-
+    
+    public void mostrarEuler() {
+        Formulas.tiempoConsumicion(hasta, valorK, h);
+        
+        grafico.mostrarEuler();
+    }
     public int cantClientes() {
         return numeroOrdenCliente;
     }
