@@ -348,9 +348,9 @@ public class Grafico {
         t.setVisible(true);
     }
     
-    public void mostrarEuler(){
+    public void mostrarEuler(int valorT1,int valorT, float valorK, double h1){
         tEuler.setVisible(true);
-        calcularEuler();
+        calcularEuler(valorT1, valorT, valorK,h1);
         
     }
 
@@ -408,8 +408,57 @@ public class Grafico {
             }
         }
     }
-
-    private void calcularEuler() {
-       
+    
+    static double h;
+    private void calcularEuler(int valorT1, int valorT, float valorK, double h1) {
+        h = h1;
+        System.out.println("el valor que metió es"+h);
+        double t0 = 0;
+        double T = 0;
+        double valorDiferencial = 0;
+        double t1 = 0;
+        double T1 = 0;
+        
+          
+            String [] columna = {"t","T","dT/dt","t+1","T(t+1)", ""};
+            Object [] filas = {null,null,null,t1,T1, "PARA 50"};
+        model_euler.setColumnIdentifiers(columna);
+        model_euler.addRow(filas);
+        do {
+            t0 = t1;
+            T = T1;
+            valorDiferencial = valorK * 0.3 * (valorT * valorT);
+            t1 = t0 + h;
+            T1 = T + (h * valorDiferencial);
+            Object []filas1 = {t0,T,valorDiferencial,t1,T1};
+            model_euler.addRow(filas1);
+        } while (T1 < valorT);
+            Object []filas2 = {t1,T1,null,null,null};
+        model_euler.addRow(filas2);
+        
+        
+        Object []hueco = {"//////////","//////////","//////////","//////////","//////////"};
+        model_euler.addRow(hueco);
+        model_euler.addRow(hueco);
+        model_euler.addRow(hueco);
+        
+        t0 = 0;
+        T = 0;
+        valorDiferencial = 0;
+        t1 = 0;
+        T1 = 0;
+            Object [] filas12 = {null,null,null,t1,T1, "PARA 20"};
+        model_euler.addRow(filas12);
+        do {
+            t0 = t1;
+            T = T1;
+            valorDiferencial = valorK * 0.3 * (valorT1 * valorT1);
+            t1 = t0 + h;
+            T1 = T + (h * valorDiferencial);
+            Object []filas1 = {t0,T,valorDiferencial,t1,T1};
+            model_euler.addRow(filas1);
+        } while (T1 < valorT1);
+            Object []filas23 = {t1,T1,null,null,null};
+        model_euler.addRow(filas23);
     }
 }

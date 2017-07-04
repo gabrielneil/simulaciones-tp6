@@ -445,9 +445,8 @@ public class Calculator {
     }
     
     public void mostrarEuler() {
-        Formulas.tiempoConsumicion(hasta, valorK, h);
-        
-        grafico.mostrarEuler();
+//        Formulas.tiempoConsumicion(hasta, valorK, h);
+        grafico.mostrarEuler(20,50, valorK, h);
     }
     public int cantClientes() {
         return numeroOrdenCliente;
