@@ -5,6 +5,9 @@
  */
 package simulaciones.tp6;
 
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -13,6 +16,12 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class CellRender extends DefaultTableCellRenderer {
     
-//    public
+    private Component componente;
     
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        
+        componente = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        componente.setBackground(Color.YELLOW);
+        return componente;
+    }
 }
