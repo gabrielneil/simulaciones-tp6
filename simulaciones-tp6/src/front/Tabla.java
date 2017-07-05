@@ -23,7 +23,7 @@ public class Tabla extends javax.swing.JFrame {
     public Tabla(Controller controller) {
         initComponents();
         this.controller = controller;
-        _tblSimulacion.setDefaultRenderer(Object.class, new TableCellRenderColor());
+        //_tblSimulacion.setDefaultRenderer(Object.class, new TableCellRenderColor());
     }
 
     /**
