@@ -55,7 +55,6 @@ public class Formulas {
             T1 = T + (h * valorDiferencial);
         } while (T1 < valorT);
         
-        
         return t1*10;
     }
 

@@ -11,6 +11,7 @@ import front.Tabla;
 import front.Tabla_clientes;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gneil
@@ -347,11 +348,11 @@ public class Grafico {
     public void mostrarClientes() {
         t.setVisible(true);
     }
-    
-    public void mostrarEuler(int valorT1,int valorT, float valorK, double h1){
+
+    public void mostrarEuler(int valorT1, int valorT, float valorK, double h1) {
         tEuler.setVisible(true);
-        calcularEuler(valorT1, valorT, valorK,h1);
-        
+        calcularEuler(valorT1, valorT, valorK, h1);
+
     }
 
     String arreglo[];
@@ -372,7 +373,7 @@ public class Grafico {
             }
             arreglo[suma] = "Hora Partida (" + contador + ")";
             i = suma;
-        contador++;
+            contador++;
         }
 
         for (int i = 0; i < lista.size(); i++) {
@@ -392,36 +393,33 @@ public class Grafico {
         }
         model_cliente.addRow(valoresClientes);
     }
-    
-    
-    
-    
-    public void buscarLosMayores(){
+
+    public void buscarLosMayores() {
         double menorEnCaja = 0;
         for (int i = 1; i < model.getRowCount(); i++) {
             //double value = Double.parseDouble(String.valueOf(model.getValueAt(i, 8)));
-            if (model.getValueAt(i, 8)!=null) {
-                if (menorEnCaja == 0|| menorEnCaja > (double) model.getValueAt(i, 8)) {
-                double value = (double) model.getValueAt(i, 8);
-                System.out.println("Entro con valor "+value);
+            if (model.getValueAt(i, 8) != null) {
+                if (menorEnCaja == 0 || menorEnCaja > (double) model.getValueAt(i, 8)) {
+                    double value = (double) model.getValueAt(i, 8);
+                    System.out.println("Entro con valor " + value);
                 }
             }
         }
     }
-    
+
     static double h;
+
     private void calcularEuler(int valorT1, int valorT, float valorK, double h1) {
         h = h1;
-        System.out.println("el valor que metió es"+h);
+        System.out.println("el valor que metió es" + h);
         double t0 = 0;
         double T = 0;
         double valorDiferencial = 0;
         double t1 = 0;
         double T1 = 0;
-        
-          
-            String [] columna = {"t","T","dT/dt","t+1","T(t+1)", ""};
-            Object [] filas = {null,null,null,t1,T1, "PARA 50"};
+
+        String[] columna = {"t", "T", "dT/dt", "t+1", "T(t+1)", ""};
+        Object[] filas = {null, null, null, t1, T1, "PARA 50"};
         model_euler.setColumnIdentifiers(columna);
         model_euler.addRow(filas);
         do {
@@ -430,24 +428,23 @@ public class Grafico {
             valorDiferencial = valorK * 0.3 * (valorT * valorT);
             t1 = t0 + h;
             T1 = T + (h * valorDiferencial);
-            Object []filas1 = {t0,T,valorDiferencial,t1,T1};
+            Object[] filas1 = {t0, T, valorDiferencial, t1, T1};
             model_euler.addRow(filas1);
         } while (T1 < valorT);
-            Object []filas2 = {t1,T1,null,null,null};
+        Object[] filas2 = {t1, T1, null, null, null};
         model_euler.addRow(filas2);
-        
-        
-        Object []hueco = {"//////////","//////////","//////////","//////////","//////////"};
+
+        Object[] hueco = {"//////////", "//////////", "//////////", "//////////", "//////////"};
         model_euler.addRow(hueco);
         model_euler.addRow(hueco);
         model_euler.addRow(hueco);
-        
+
         t0 = 0;
         T = 0;
         valorDiferencial = 0;
         t1 = 0;
         T1 = 0;
-            Object [] filas12 = {null,null,null,t1,T1, "PARA 20"};
+        Object[] filas12 = {null, null, null, t1, T1, "PARA 20"};
         model_euler.addRow(filas12);
         do {
             t0 = t1;
@@ -455,10 +452,10 @@ public class Grafico {
             valorDiferencial = valorK * 0.3 * (valorT1 * valorT1);
             t1 = t0 + h;
             T1 = T + (h * valorDiferencial);
-            Object []filas1 = {t0,T,valorDiferencial,t1,T1};
+            Object[] filas1 = {t0, T, valorDiferencial, t1, T1};
             model_euler.addRow(filas1);
         } while (T1 < valorT1);
-            Object []filas23 = {t1,T1,null,null,null};
+        Object[] filas23 = {t1, T1, null, null, null};
         model_euler.addRow(filas23);
     }
 }

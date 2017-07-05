@@ -5,6 +5,7 @@
  */
 package front;
 
+import java.awt.Color;
 import simulaciones.tp6.Controller;
 import java.text.SimpleDateFormat;
 import javax.swing.JScrollPane;
@@ -225,6 +226,7 @@ public class Tabla extends javax.swing.JFrame {
     private void euler_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_euler_btnActionPerformed
         // TODO add your handling code here:
         controller.mostrarEuler();
+//           _tblSimulacion.setBackground(Color.red);
     }//GEN-LAST:event_euler_btnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

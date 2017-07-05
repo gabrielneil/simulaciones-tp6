@@ -62,9 +62,9 @@ public class Calculator {
     int numeroVuelta = 0;
     int cantClientes = 0;
     double tiempoAcumulado = 0;
-    float valorK=0;
-    double h=0;
-    
+    float valorK = 0;
+    double h = 0;
+
     private static final String NO_EVN = "NULL";
     public static final String EVN_INICIO = "Inicio";
     public static final String EVN_LLEGADA = "Llegada Cliente";
@@ -115,20 +115,21 @@ public class Calculator {
         this.reloj = tiempo;
     }
 
+    double tiempoDeCorte = 60;
+
     public void initSimulacion() {
         grafico = new Grafico(lista, controller);
         buscar = new Buscar(lista);
         grafico.hacerVisible();
         setEvento(NO_EVN);
-        double tiempoDeCorte = 60;
-//        if (t) {
-//            tiempoDeCorte = hasta;
-//        }
+
+        tiempoDeCorte = (tiempoDeCorte < hasta) ? hasta : tiempoDeCorte;
+
         while (reloj <= tiempoDeCorte) {
             simularAvance();
         }
         grafico.tiempoPermanencia(((double) tiempoAcumulado / cantClientes));
-       // grafico.buscarLosMayores();
+        // grafico.buscarLosMayores();
     }
 
     public void simularAvance() {
@@ -322,15 +323,15 @@ public class Calculator {
     }
 
     private void comproYSeSienta(float rndAccion, Cliente cliente) {
-        int valorT=0;
+        int valorT = 0;
         float rndTiempoConsumicion = r.nextFloat();
-        
-        if (rndTiempoConsumicion<0.50) {
-            valorT=20;
-        }else{
-            valorT=50;
+
+        if (rndTiempoConsumicion < 0.50) {
+            valorT = 20;
+        } else {
+            valorT = 50;
         }
-        
+
         double tiempoConsumicion = Formulas.tiempoConsumicion(valorT, valorK, h);
         double finConsumicion = tiempoConsumicion + reloj;
         cliente.setEstado(EVN_CONSUMIENDO);
@@ -443,11 +444,11 @@ public class Calculator {
     public void mostrarClientes() {
         grafico.mostrarClientes();
     }
-    
+
     public void mostrarEuler() {
-//        Formulas.tiempoConsumicion(hasta, valorK, h);
-        grafico.mostrarEuler(20,50, valorK, h);
+        grafico.mostrarEuler(20, 50, valorK, h);
     }
+
     public int cantClientes() {
         return numeroOrdenCliente;
     }
