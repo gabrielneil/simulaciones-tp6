@@ -41,7 +41,7 @@ public class Formulas {
     static double h = 0.001;
     public static double tiempoConsumicion(int valorT, float valorK, double h1) {
         h = h1;
-        System.out.println("el valor que metió es"+h);
+      //  System.out.println("el valor que metió es"+h);
         double t0 = 0;
         double T = 0;
         double valorDiferencial = 0;

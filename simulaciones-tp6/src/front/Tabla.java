@@ -6,6 +6,7 @@
 package front;
 
 import java.awt.Color;
+import java.math.BigDecimal;
 import simulaciones.tp6.Controller;
 import java.text.SimpleDateFormat;
 import javax.swing.JScrollPane;
@@ -22,6 +23,7 @@ public class Tabla extends javax.swing.JFrame {
     public Tabla(Controller controller) {
         initComponents();
         this.controller = controller;
+        _tblSimulacion.setDefaultRenderer(Object.class, new TableCellRenderColor());
     }
 
     /**
@@ -241,7 +243,7 @@ public class Tabla extends javax.swing.JFrame {
     private javax.swing.JButton verClientes_btn;
     // End of variables declaration//GEN-END:variables
 
-    public void setResultado(double resultado){
+    public void setResultado(BigDecimal resultado){
         resultado_txt.setText(String.valueOf(resultado));
     }
 }

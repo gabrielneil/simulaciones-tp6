@@ -8,6 +8,8 @@ package simulaciones.tp6;
 import Objects.Cliente;
 import Objects.Servidor;
 import front.Tabla;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -124,11 +126,14 @@ public class Calculator {
         setEvento(NO_EVN);
 
         tiempoDeCorte = (tiempoDeCorte < hasta) ? hasta : tiempoDeCorte;
-
+        grafico.setHasta(tiempoDeCorte);
+        
         while (reloj <= tiempoDeCorte) {
             simularAvance();
         }
-        grafico.tiempoPermanencia(((double) tiempoAcumulado / cantClientes));
+        grafico.impresionUltima();
+        
+        grafico.tiempoPermanencia(truncateDecimal((double) tiempoAcumulado / cantClientes,2));
         // grafico.buscarLosMayores();
     }
 
@@ -194,7 +199,35 @@ public class Calculator {
             if (reloj >= desde && reloj <= hasta) {
                 grafico.entraMesa(EVN_LLEGADA, reloj, rnd1TiempoLlegada, rnd2TiempoLlegada, proxLlegada, minProximaLlegada, rndAccion, EVN_UTILIZANDO_MESA, minTerminaAtencionCaja, minTerminaEntrega, rndTiempoUtilizacionMesa, tiempoUtilizacionMesa, tiempoFinUtilizacionMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
             }
-
+            
+             grafico.ultimaFila(
+                        EVN_LLEGADA, 
+                        reloj,
+                        rnd1TiempoLlegada, 
+                        rnd2TiempoLlegada, 
+                        proxLlegada,
+                        minProximaLlegada,
+                        rndAccion, 
+                        EVN_UTILIZANDO_MESA,
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        rndTiempoUtilizacionMesa,
+                        tiempoUtilizacionMesa, 
+                        tiempoFinUtilizacionMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
+             
             //si sos el menor, seteate
             minTerminaUsarMesa = lista.get(buscar.quienCortaAntes(EVN_UTILIZANDO_MESA)).getHoraPartida();
         } else {
@@ -210,9 +243,38 @@ public class Calculator {
             lista.add(nuevoCliente);
             numeroOrdenCliente++;
 
-            if (reloj >= desde && reloj <= hasta) {
+            if (reloj >= desde && reloj <= hasta ) {
                 grafico.entraComprar(EVN_LLEGADA, reloj, rnd1TiempoLlegada, rnd2TiempoLlegada, proxLlegada, minProximaLlegada, rndAccion, EVN_COMPRA, minTerminaAtencionCaja, minTerminaEntrega, minTerminaUsarMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
+            
+           
             }
+              grafico.ultimaFila(
+                        EVN_LLEGADA, 
+                        reloj,
+                        rnd1TiempoLlegada, 
+                        rnd2TiempoLlegada, 
+                        proxLlegada,
+                        minProximaLlegada,
+                        rndAccion, 
+                        EVN_COMPRA,
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        0,
+                        0, 
+                        minTerminaUsarMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
         }
     }
 
@@ -234,7 +296,35 @@ public class Calculator {
 
         if (reloj >= desde && reloj <= hasta) {
             grafico.finConsumicion(EVN_CONSUMICION, reloj, minProximaLlegada, minTerminaAtencionCaja, minTerminaEntrega, minTerminaUsarMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
-        }
+          
+            }
+        grafico.ultimaFila(
+                        EVN_CONSUMICION, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        0,
+                        0, 
+                        minTerminaUsarMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
     }
 
     private void finAtencionCaja() {
@@ -270,7 +360,34 @@ public class Calculator {
             if (reloj >= desde && reloj <= hasta) {
                 grafico.atencionEmpleados(EVN_FIN_ATENCION, reloj, rndEspera, minProximaLlegada, minTerminaAtencionCaja, tiempoEntrega, finTiempoEntrega, minTerminaUsarMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
             }
-
+             grafico.ultimaFila(
+                        EVN_FIN_ATENCION, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        minTerminaAtencionCaja, 
+                        rndEspera, 
+                        tiempoEntrega, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        0,
+                        0, 
+                        minTerminaUsarMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
+            
         } else {
             empleado1.aumentarCola();
             empleado2.aumentarCola();
@@ -291,7 +408,36 @@ public class Calculator {
             }
             if (reloj >= desde && reloj <= hasta) {
                 grafico.aColaEmpleados(EVN_FIN_ATENCION, reloj, minProximaLlegada, minTerminaAtencionCaja, minTerminaEntrega, minTerminaUsarMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
+           
             }
+             grafico.ultimaFila(
+                        EVN_FIN_ATENCION, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        0, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        0,
+                        0, 
+                        minTerminaUsarMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
+            
         }
     }
 
@@ -319,7 +465,36 @@ public class Calculator {
         }
         if (reloj >= desde && reloj <= hasta) {
             grafico.comproYSeRetira(EVN_FIN_ATENCION_EMPLEADO, reloj, minProximaLlegada, minTerminaAtencionCaja, minTerminaEntrega, rndAccion, minTerminaUsarMesa, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
-        }
+        
+            }
+        
+        grafico.ultimaFila(
+                        EVN_FIN_ATENCION_EMPLEADO, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        rndAccion,
+                        "Se retira",
+                        0,
+                        0, 
+                        minTerminaUsarMesa,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
     }
 
     private void comproYSeSienta(float rndAccion, Cliente cliente) {
@@ -349,6 +524,35 @@ public class Calculator {
         if (reloj >= desde && reloj <= hasta) {
             grafico.comproYSeSienta(EVN_FIN_ATENCION_EMPLEADO, reloj, minProximaLlegada, minTerminaAtencionCaja, minTerminaEntrega, rndAccion, EVN_CONSUMIENDO, rndTiempoConsumicion, tiempoConsumicion, finConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes, valorT);
         }
+        
+        grafico.ultimaFila(
+                        EVN_FIN_ATENCION_EMPLEADO, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        rndAccion,
+                        EVN_CONSUMIENDO,
+                        0,
+                        0, 
+                        0,
+                        rndTiempoConsumicion,
+                        valorT,
+                        tiempoConsumicion,
+                        finConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
+        //falta mostrar el valor de T;
         minTerminaConsumicion = lista.get(buscar.quienCortaAntes(EVN_CONSUMIENDO)).getHoraPartida();
     }
 
@@ -362,6 +566,33 @@ public class Calculator {
         if (reloj >= desde && reloj <= hasta) {
             grafico.noComioYUsoMesa(EVN_UTILIZACION, reloj, minProximaLlegada, minTerminaAtencionCaja, minTerminaEntrega, minTerminaConsumicion, cajero, empleado1, empleado2, tiempoAcumulado, cantClientes);
         }
+          grafico.ultimaFila(
+                        EVN_UTILIZACION, 
+                        reloj,
+                        0, 
+                        0, 
+                        0,
+                        minProximaLlegada,
+                        0, 
+                        "",
+                        minTerminaAtencionCaja, 
+                        0, 
+                        0, 
+                        minTerminaEntrega,
+                        0,
+                        "",
+                        0,
+                        0, 
+                        0,
+                        0,
+                        0,
+                        0,
+                        minTerminaConsumicion, 
+                        cajero, 
+                        empleado1, 
+                        empleado2, 
+                        tiempoAcumulado,
+                        cantClientes);
         lista.remove(cliente);
 
         int elMasViejo = buscar.quienCortaAntes(EVN_UTILIZANDO_MESA);
@@ -452,4 +683,13 @@ public class Calculator {
     public int cantClientes() {
         return numeroOrdenCliente;
     }
+
+private static BigDecimal truncateDecimal(double x,int numberofDecimals)
+{
+    if ( x > 0) {
+        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR);
+    } else {
+        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
+    }
+}
 }
